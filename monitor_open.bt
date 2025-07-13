@@ -1,0 +1,13 @@
+#!/usr/bin/env bpftrace
+
+BEGIN {
+    printf("Monitoring file opens for process 'task'...\n");
+}
+
+tracepoint:syscalls:sys_enter_open,
+tracepoint:syscalls:sys_enter_openat 
+{
+    if (comm == "task") {
+        printf("[INFO] binary:task, file_open_path: %s\n", str(args->filename));
+    }
+}
