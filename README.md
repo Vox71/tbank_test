@@ -7,3 +7,5 @@ clang -o monitor monitor.c -lbpf -lelf
 sudo ./monitor --block /etc/passwd --block /other/file
 
 sudo ./monitor_open.bt
+
+Привет, Медвед!
